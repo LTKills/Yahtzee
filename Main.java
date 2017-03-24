@@ -1,9 +1,12 @@
+package com.company;
 
 public class Main {
-	public static void main(String[] args) {
-		Dado a = new Dado();
-		System.out.println(a);
-		a.rolar();
-		System.out.println(a);
-	}
+
+    public static void main(String[] args) throws Exception {
+        // TODO: lidar com exceptions
+
+        String input = EntradaTeclado.leString();
+        System.out.printf("'%s'\n", input);
+
+    }
 }
