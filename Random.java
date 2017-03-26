@@ -3,7 +3,8 @@ package com.company;
 import java.util.Calendar;
 
 /**
- * Created by bruno on 16/03/17.
+ * Gerador simples de números aleatórios.
+ * @author delamaro
  */
 
 public class Random {
@@ -14,15 +15,16 @@ public class Random {
     public long xi = 1023; // semente inicial
 
     /**
-     * Permite definir a semente usada para gerar os números aleatórios
-     * @param semente: semente inicial para ser inicializada.
+     * Construtor que permite criar o gerador, especificando o valor inicial da semente.
+     * @param semente: O valor inicial da semente
      */
     public Random(int semente) {
         xi = semente;
     }
 
+
     /**
-     * Se o usuário não forncece nenhuma semente, usamos o relógio da máquina
+     * Construtor que usa uma semente aleatória, usando o método Calendar.getTimeInMillis().
      */
     public Random() {
         xi = Calendar.getInstance().getTimeInMillis();
@@ -30,8 +32,18 @@ public class Random {
 
 
     /**
-     * Calcula um número aleatório entre 0 1
-     * @return o número calculado, em double.
+     * Permite alterar a semente de geração de números aleatórios.
+     * Supostamente deve ser chamada antes de iniciar a geração, mas se for chamado a qualquer instante,
+     * reseta o valor da semente
+     * @param semente: o valor da nova semente
+     */
+    public void setSemente(int semente) {
+        xi = semente;
+    }
+
+    /**
+     * Retorna um número aleatório no intervalo (0,1[
+     * @return o número gerado.
      */
     private double getRand() {
         // Calcula o próximo valor de xi, entre 0 e 1
@@ -41,10 +53,11 @@ public class Random {
         return next;
     }
 
+
     /**
-     * Gera um número aleatório
-     * @param max
-     * @return
+     * Retorna um valor inteiro no intervalo (0,max[
+     * @param max: O valor limite para a geração do número inteiro
+     * @return o número aleatório gerado.
      */
     public int getIntRand(int max) {
         // gera valor entre 0 e 1 e multiplica por max

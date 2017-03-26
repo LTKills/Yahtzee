@@ -1,51 +1,70 @@
 package com.company;
 
+import java.io.IOException;
+
 /**
- * Created by bruno on 23/03/17.
+ * Essa é a classe inicial do programa Bozó. Possui apenas o método main, que cuida da execução do jogo.
+ * @author Bruno & Gabriel
  */
 public class Bozo {
 
     private static int maxRodadas = 10;
     private int rodada;
 
-    // Classe Placeholder, TODO: deletar depois
-    public class RolaDados {
+    // Classes Placeholder, TODO: deletar depois
+    public static class RolaDados {
         public void rolar() {}
-
-        public void rolar(String s) {}
+        public int[] rolar(String s) {
+            int[] vector = {1, 2, 3, 4, 5};
+            return vector;
+        }
     }
 
-    public class Placar {
-        public void add(int posicao, int[] dados) {}
-        public int getScore() {return 10;};
-        public java.lang.String toString() {return "String\n";}
-    }
-
-    public void main(String[] args) throws Exception {
-        // TODO: Adicionar static depois na declaração
+    /**
+     * Método inicial do programa. Ele cuida da execução do jogo e possui um laço,
+     * no qual cada iteração representa uma rodada do jogo. Em cada rodada, o jogador joga os dados até 3 vezes,
+     * e depois escolhe a posição do placar que deseja preencher. No final das rodadas a pontuação total é exibida.
+     * @throws IOException caso algum input digitado não seja o correto.
+     */
+    public static void main() throws IOException {
+        // TODO: Adicionar static depois na declaração depois de remover os placeholders
+        // TODO: Verificar se o código while(true) é o que o prof quer.
 
         RolaDados dados = new RolaDados();
+        Placar placar = new Placar();
         String input;
-        int posicao;
 
-        private int[5] diceToInt(String dice) {
-            // TODO: this.
-        }
+        int[] vector = new int[5];
 
-        for (int i =0; i<this.maxRodadas; i++) {
-            System.out.print("Rolando os dados...\n");
+        for (int i =0; i<maxRodadas; i++) {
+            System.out.print("Pressione Enter para começar a rodada...\n");
+            EntradaTeclado.leString();
+
             dados.rolar();
             System.out.print(dados);
 
             input = EntradaTeclado.leString();
-            if (input.length() != 0) { // o usuário quer manter 1 ou mais dados
-                dados.rolar(input);
-            } else {
-                posicao = EntradaTeclado.leInt();
-
-
+            // verificamos se o usuário quer mudar algum dado por meio de input.lenght()
+            for(int j = 0; j<2 && input.length() != 0; j += 1) {
+                vector = dados.rolar(input);
+                input = EntradaTeclado.leString();
             }
 
+            System.out.print("Digite a posicao em que quer inserir: ");
+            int posicao = EntradaTeclado.leInt();
+            while (true) {
+                try {
+                    placar.add(posicao, vector);
+                    break;
+                } catch (java.lang.IllegalArgumentException exception) {
+                    System.out.print("Posição inválida, insira um número de 1 a 10 que ainda não foi usado.\n");
+                    posicao = EntradaTeclado.leInt();
+                }
+            }
+
+            System.out.print(placar);
         }
+
+        System.out.printf("Seu score final é: %d\n", placar.getScore());
     }
 }

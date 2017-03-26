@@ -1,12 +1,11 @@
 package com.company;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) throws Exception {
-        // TODO: lidar com exceptions
-
-        String input = EntradaTeclado.leString();
-        System.out.printf("'%s'\n", input);
-
+    public static void main(String[] args) throws IOException {
+        // TODO: lidar com exceptions(?)
+        Bozo.main();
     }
 }
