@@ -1,5 +1,11 @@
 public class RolaDados {
     Dado[] dice;
+    
+    /**
+     * 
+     *	Apresentação do conjunto de dados e tratamento grupal deles, selecionando quais devem ser rodados novamente,
+     *	e imprimindo-os lado a lado na tela quando necessário 
+     */
 
     RolaDados(int n) {
         dice = new Dado[n];
@@ -23,8 +29,8 @@ public class RolaDados {
         return ans;
     }
 
+    // Cria um vetor de booleanos e chama a função acima, evitando a replicação de código
     public int[] rolar(String s) {
-        String a;
         String[] which = s.split(" ");
         int val = 0;
         boolean[] quais = new boolean[dice.length];
@@ -49,7 +55,7 @@ public class RolaDados {
 
         for(int j = 0; j < 5; j++) {
             for(int i = 0; i < dice.length; i++) {
-                ans += dice[i].toVecString()[0] + space;
+                ans += dice[i].toVecString()[j] + space;
             }
             ans += "\n";
         }

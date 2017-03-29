@@ -1,5 +1,3 @@
-package com.company;
-
 import java.util.Arrays;
 
 /**
@@ -87,8 +85,8 @@ public class Placar {
 
     @Override
     /**
-     * A representa√ß√£o na forma de string, mostra o placar completo, indicando quais s√£o as posi√ß√µes livres,
-     * (com seus respectivos n√∫meros) e o valor obtido nas posi√ß√µes j√° ocupadas.
+     * A representaÁ„o na forma de string, mostra o placar completo, indicando quais s√£o as posiÁıees livres,
+     * (com seus respectivos n˙meros) e o valor obtido nas posiÁıes j· ocupadas.
      */
     public String toString() {
         String divisaoLinha = "------------------------------";
@@ -96,7 +94,7 @@ public class Placar {
         String fim = "+---------+";
 
         String[] array = new String[10];
-        String pontuacaoFinal = "";
+        //String pontuacaoFinal = "";
         for (int i=0; i<10; i++) {
 
             if (pontuacao[i] != naoOcupado)
@@ -105,20 +103,10 @@ public class Placar {
                 if (i != 9)
                     array[i] = String.format("   (%d)   ", i+1);
                 else
-                    array[i] = String.format("  (%d)   ", i+1);     // subtraimos um espaco para a formatac√£o
+                    array[i] = String.format("  (%d)   ", i+1);     // subtraimos um espaco para a formataÁ„o
             if ( i < 3 || i > 5 ) array[i] += "|";
         }
 
-        /* TODO: Deletar exemplo da formata√ß√£o final abaixo
-            (1)   |   (7)   |   (4)
-         --------------------------
-            (2)   |   20    |   (5)
-         --------------------------
-            00    |   30    |   (6)
-         --------------------------
-                  |   (10)  |
-                  +---------+
-         */
         return array[0] + array[6] + array[3] + "\n" + divisaoLinha + "\n"
                 + array[1] + array[7] + array[4] + "\n" + divisaoLinha + "\n"
                 + array[2] + array[8] + array[5] +"\n" + divisaoLinha + "\n"

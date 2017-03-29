@@ -1,25 +1,23 @@
-package com.company;
+
 
 import java.io.IOException;
 
 /**
- * Essa √© a classe inicial do programa Boz√≥. Possui apenas o m√©todo main, que cuida da execu√ß√£o do jogo.
+ * Essa È a classe inicial do programa BozÛ. Possui apenas o mÈtodo main, que cuida da execuÁ„o do jogo.
  * @author Bruno & Gabriel
  */
 public class Bozo {
 
     private static int maxRodadas = 10;
-    private int rodada;
+    //private int rodada;
 
     /**
-     * M√©todo inicial do programa. Ele cuida da execu√ß√£o do jogo e possui um la√ßo,
-     * no qual cada itera√ß√£o representa uma rodada do jogo. Em cada rodada, o jogador joga os dados at√© 3 vezes,
-     * e depois escolhe a posi√ß√£o do placar que deseja preencher. No final das rodadas a pontua√ß√£o total √© exibida.
+     * MÈtodo inicial do programa. Ele cuida da execuÁ„oo do jogo e possui um laÁo,
+     * no qual cada iteraÁ„o representa uma rodada do jogo. Em cada rodada, o jogador joga os dados at√© 3 vezes,
+     * e depois escolhe a posiÁ„o do placar que deseja preencher. No final das rodadas a pontuaÁ„o total È exibida.
      * @throws IOException caso algum input digitado n√£o seja o correto.
      */
     public static void bmain() throws IOException {
-        // TODO: Adicionar static depois na declara√ß√£o depois de remover os placeholders
-        // TODO: Verificar se o c√≥digo while(true) √© o que o prof quer.
 
         RolaDados dados = new RolaDados(5);
         Placar placar = new Placar();
@@ -28,27 +26,32 @@ public class Bozo {
         int[] vector = new int[5];
 
         for (int i = 0; i < maxRodadas; i++) {
-            System.out.print("Pressione Enter para come√ßar a rodada...\n");
+            System.out.print("Pressione Enter para comeÁar a rodada...\n");
             EntradaTeclado.leString();
 
             dados.rolar();
             System.out.print(dados);
 
+            System.out.println("Quer mudar quais dados? (Enter para prosseguir)");
             input = EntradaTeclado.leString();
+            
             // verificamos se o usu√°rio quer mudar algum dado por meio de input.lenght()
+            
             for(int j = 0; j < 2 && input.length() != 0; j += 1) {
                 vector = dados.rolar(input);
+                System.out.print(dados);
+                System.out.println("Quer mudar quais dados? (Enter para prosseguir)");
                 input = EntradaTeclado.leString();
             }
 
-            System.out.print("Digite a posicao em que quer inserir: ");
+            System.out.print("Digite a posiÁ„o em que quer inserir: ");
             int posicao = EntradaTeclado.leInt();
             while (true) {
                 try {
                     placar.add(posicao, vector);
                     break;
                 } catch (java.lang.IllegalArgumentException exception) {
-                    System.out.print("Posi√ß√£o inv√°lida, insira um n√∫mero de 1 a 10 que ainda n√£o foi usado.\n");
+                    System.out.print("PosiÁ„o inv·lida, insira um n˙mero de 1 a 10 que ainda n„o foi usado.\n");
                     posicao = EntradaTeclado.leInt();
                 }
             }
@@ -56,6 +59,6 @@ public class Bozo {
             System.out.print(placar);
         }
 
-        System.out.printf("Seu score final √©: %d\n", placar.getScore());
+        System.out.printf("Seu score final È: %d\n", placar.getScore());
     }
 }

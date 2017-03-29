@@ -1,5 +1,12 @@
 public class Dado {
 	protected int lados, ultimo;
+	
+	/**
+	 * 
+	 * Classe onde é implementada a aleatorização do dado e a conversão da representação numérica da face
+	 * para o formato texto 
+	 * 
+	 * */
 
 	Dado() {
 		lados = 6;
@@ -15,7 +22,6 @@ public class Dado {
 		return ultimo;
 	}
 
-
 	public int rolar() {
 		try {Thread.sleep(100);} catch(InterruptedException e) {}
 		Random m = new Random();
@@ -23,6 +29,11 @@ public class Dado {
         return ultimo;
 	}
 
+	/**
+	 *  Gerar o array de strings pois temos que imprimir linha a linha, não é possível
+	 *  imprimir todo o dado de uma só vez pois os demais dados devem ficar adjacentes a este na tela
+	 *  @return Array de Strings para que seja possível imprimir uma linha de cada vez
+	 */
 	public String[] toVecString() {
 		String[] ret = new String[5];
         for(int i = 0; i < 5; i++) ret[i] = new String();
