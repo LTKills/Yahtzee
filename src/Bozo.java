@@ -11,32 +11,23 @@ public class Bozo {
     private static int maxRodadas = 10;
     private int rodada;
 
-    // Classes Placeholder, TODO: deletar depois
-    public static class RolaDados {
-        public void rolar() {}
-        public int[] rolar(String s) {
-            int[] vector = {1, 2, 3, 4, 5};
-            return vector;
-        }
-    }
-
     /**
      * Método inicial do programa. Ele cuida da execução do jogo e possui um laço,
      * no qual cada iteração representa uma rodada do jogo. Em cada rodada, o jogador joga os dados até 3 vezes,
      * e depois escolhe a posição do placar que deseja preencher. No final das rodadas a pontuação total é exibida.
      * @throws IOException caso algum input digitado não seja o correto.
      */
-    public static void main() throws IOException {
+    public static void bmain() throws IOException {
         // TODO: Adicionar static depois na declaração depois de remover os placeholders
         // TODO: Verificar se o código while(true) é o que o prof quer.
 
-        RolaDados dados = new RolaDados();
+        RolaDados dados = new RolaDados(5);
         Placar placar = new Placar();
         String input;
 
         int[] vector = new int[5];
 
-        for (int i =0; i<maxRodadas; i++) {
+        for (int i = 0; i < maxRodadas; i++) {
             System.out.print("Pressione Enter para começar a rodada...\n");
             EntradaTeclado.leString();
 
@@ -45,7 +36,7 @@ public class Bozo {
 
             input = EntradaTeclado.leString();
             // verificamos se o usuário quer mudar algum dado por meio de input.lenght()
-            for(int j = 0; j<2 && input.length() != 0; j += 1) {
+            for(int j = 0; j < 2 && input.length() != 0; j += 1) {
                 vector = dados.rolar(input);
                 input = EntradaTeclado.leString();
             }
