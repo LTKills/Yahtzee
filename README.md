@@ -7,6 +7,7 @@ can be bugs in the poits counting as well as repeating cards.
 
 ## What's next
 
+- Translate code from portuguese to english
 - Further testing
 - Implement graphical interface
 - Implement sound effects
